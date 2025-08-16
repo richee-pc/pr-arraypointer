@@ -1,0 +1,1159 @@
+<!-- Chosen Palette: Warm Neutrals with Subtle Accents (Greys, Soft Blues, Muted Greens, Light Peach) -->
+<!-- Application Structure Plan:
+이 웹 페이지는 C 언어의 '배열'과 '포인터' 개념을 고등학생에게 효과적으로 가르치기 위한 단일 페이지 애플리케이션입니다.
+정보 구조는 다음과 같습니다:
+1.  **시작 화면 (Home):** 간단한 소개와 함께 배열과 포인터 섹션으로 이동하는 탐색 버튼을 제공하여 학생들이 흥미를 가지고 시작할 수 있도록 유도합니다.
+2.  **배열 섹션:**
+    * 개념 설명: '사물함' 비유를 사용하여 배열의 본질을 시각적으로 설명합니다.
+    * 선언 및 접근: 코드 예시와 함께 0-인덱스 개념을 명확히 합니다.
+    * 특징: 배열의 중요한 특징들을 간결하게 요약하여 핵심 정보를 전달합니다.
+    * 다차원 배열: 행렬 비유 및 메모리 구조 시각화를 통해 2차원 배열 개념을 설명하고 초기화 예시를 제공합니다.
+3.  **포인터 섹션:**
+    * 개념 설명: '집 주소' 비유를 사용하여 포인터의 본질을 시각적으로 설명합니다.
+    * 주소/간접 참조 연산자: '&'와 '*' 연산자의 역할을 명확한 비유와 코드 예시로 설명합니다.
+    * 포인터 연산: 자료형 크기에 따른 증감 연산 설명을 추가하고 시각적 예시 및 코드 예시를 제공합니다.
+    * 특징: 포인터의 중요한 특징들을 간결하게 요약하여 핵심 정보를 전달합니다.
+각 섹션은 독립적으로 탐색 가능하며, 학생들은 상단 네비게이션을 통해 원하는 개념으로 빠르게 이동할 수 있습니다. 메인 콘텐츠는 중앙에 배치하여 가독성을 높이고, 반응형 디자인을 적용하여 모든 기기에서 최적의 학습 경험을 제공합니다. 이 구조는 학생들이 순차적으로 학습하거나, 필요에 따라 특정 개념을 다시 찾아보는 데 용이하도록 설계되었습니다.
+-->
+<!-- Visualization & Content Choices:
+보고서 정보: 배열은 동일 타입 데이터의 연속 저장 공간, 포인터는 메모리 주소를 저장하는 변수.
+목표: 고등학생의 이해 증진 및 흥미 유발.
+시각화/표현 방식:
+-   **배열 개념:** '사물함' 비유를 사용하여 HTML/CSS를 통해 사물함 형태의 레이아웃을 구성하고 텍스트와 숫자로 데이터를 시각화.
+    * 상호작용: 없음 (개념 설명에 집중).
+    * 정당화: 추상적인 메모리 공간을 구체적인 사물함으로 시각화하여 학생들이 개념을 직관적으로 이해하도록 돕습니다.
+    * 라이브러리/방법: 순수 HTML/CSS (Tailwind).
+-   **다차원 배열:** 논리적(그리드) 및 물리적(일렬) 메모리 표현을 HTML/CSS 박스와 라벨로 시각화하여 복잡한 개념을 명확히 합니다.
+    * 상호작용: 없음.
+    * 정당화: 2차원 배열이 실제 메모리에서 어떻게 저장되는지 시각적으로 보여줍니다.
+    * 라이브러리/방법: 순수 HTML/CSS (Tailwind).
+-   **포인터 개념:** '집 주소' 비유를 사용하여 HTML/CSS를 통해 변수 박스와 주소 박스를 구현하고 화살표(Unicode)로 연결하여 포인터의 연결성을 시각화.
+    * 상호작용: 없음 (개념 설명에 집중).
+    * 정당화: 포인터가 가리키는 대상과 주소의 관계를 시각적으로 명확히 하여 혼란을 줄입니다.
+    * 라이브러리/방법: 순수 HTML/CSS (Tailwind), Unicode 화살표.
+-   **포인터 연산:** 포인터 증감 연산을 그림 (HTML/CSS 박스와 화살표)으로 표현하여, 자료형 크기만큼 주소가 이동하는 것을 보여줍니다.
+    * 상호작용: 없음.
+    * 정당화: 포인터 연산의 결과를 직관적으로 이해할 수 있도록 돕습니다.
+    * 라이브러리/방법: 순수 HTML/CSS (Tailwind).
+-   **코드 예시:** `<pre><code>` 태그를 사용하여 C 코드 블록을 제공하고, `<div class="code-output">` 태그를 사용하여 코드 실행 결과(시뮬레이션)를 명확히 표시합니다. 추가적으로, 코드 실행으로 인한 메모리 또는 변수 상태 변화를 HTML/CSS 기반의 시각화로 나타내어 이해를 돕습니다. 각 시각화는 코드 결과에 따라 동적으로 변경되는 것처럼 보이도록 애니메이션을 포함합니다.
+    * 상호작용: 코드 복사 버튼 및 사용자 입력에 따른 시뮬레이션 기능 추가.
+    * 정당화: 실제 코드를 통해 개념이 어떻게 적용되는지 보여줍니다.
+    * 라이브러리/방법: 순수 HTML, Vanilla JS.
+-   **특징 요약:** 불릿 포인트를 사용하여 핵심 내용을 간결하게 전달.
+    * 상호작용: 없음.
+    * 정당화: 주요 정보를 빠르게 파악하고 복습하는 데 용이합니다.
+    * 라이브러리/방법: 순수 HTML.
+-   **전반적인 UI/UX:** Tailwind CSS를 사용하여 반응형 레이아웃, 깔끔한 디자인, 적절한 여백 및 색상 조합 구현. 섹션별 패딩과 컨테이너 최대 너비를 조정하여 가독성을 높이고, 긴 코드 블록과 시뮬레이션 결과가 적절한 스크롤과 함께 표시되도록 개선했습니다.
+    * 상호작용: 섹션 간 스크롤 이동을 위한 네비게이션 버튼 (JS).
+    * 정당화: 사용자가 모든 콘텐츠를 한 페이지에서 직관적으로 탐색하고 접근할 수 있도록 하여 학습 효율을 높입니다.
+    * 라이브러리/방법: Tailwind CSS, Vanilla JS.
+CONFIRMATION: NO SVG graphics used. NO Mermaid JS used.
+-->
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C 언어 배열과 포인터 완전 정복! 📚</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 1200px; /* 전체 컨테이너 최대 너비 */
+            margin-left: auto;
+            margin-right: auto;
+        }
+        .section-padding {
+            padding: 5rem 0; /* 섹션 상하 여백 증가 */
+        }
+        .content-padding-x {
+            padding-left: 1rem; /* 모바일에서 기본 여백 */
+            padding-right: 1rem; /* 모바일에서 기본 여백 */
+        }
+        @media (min-width: 640px) { /* sm breakpoint */
+            .content-padding-x {
+                padding-left: 2rem; /* 작은 화면에서 여백 증가 */
+                padding-right: 2rem;
+            }
+        }
+        @media (min-width: 768px) { /* md breakpoint */
+            .content-padding-x {
+                padding-left: 4rem; /* 중간 화면에서 여백 더 증가 */
+                padding-right: 4rem;
+            }
+        }
+        @media (min-width: 1024px) { /* lg breakpoint */
+            .content-padding-x {
+                padding-left: 6rem; /* 큰 화면에서 여백 더 증가 */
+                padding-right: 6rem;
+            }
+        }
+        @media (min-width: 1280px) { /* xl breakpoint */
+            .content-padding-x {
+                padding-left: 8rem; /* 매우 큰 화면에서 여백 최대 증가 */
+                padding-right: 8rem;
+            }
+        }
+
+        .code-block {
+            background-color: #eef2f7;
+            padding: 1.5rem;
+            border-radius: 0.75rem;
+            overflow-x: auto; /* 코드 블록 가로 스크롤 허용 */
+            font-family: monospace;
+            line-height: 1.5;
+            color: #333;
+            max-height: 400px; /* 코드 블록 최대 높이 */
+            word-wrap: break-word; /* 긴 단어 강제 줄바꿈 */
+        }
+        .code-block code {
+            display: block;
+            white-space: pre; /* 기본적으로 pre-wrap을 사용하되, overflow-x: auto로 제어 */
+        }
+        .code-output {
+            background-color: #f0fff4; /* Light green for output */
+            border-left: 4px solid #38a169; /* Green border */
+            padding: 1rem 1.5rem;
+            margin-top: 1rem;
+            border-radius: 0.5rem;
+            font-family: monospace;
+            color: #2f855a; /* Darker green text */
+            white-space: pre-wrap; /* Preserve whitespace and wrap long lines */
+            word-break: break-all; /* Break long words */
+            font-size: 0.9rem;
+        }
+        .highlight-text {
+            color: #2563eb;
+            font-weight: 600;
+        }
+        .box-visual {
+            background-color: #ffffff;
+            border: 2px solid #a7d9f7;
+            border-radius: 0.5rem;
+            padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            min-height: 100px;
+            position: relative; /* For absolute positioning of arrow */
+        }
+        .arrow-connector {
+            position: absolute;
+            left: 100%;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 30px; /* Length of the line */
+            height: 2px;
+            background-color: #2563eb;
+            z-index: 1;
+        }
+        .arrow-head {
+            position: absolute;
+            left: calc(100% + 28px); /* Position at the end of the line */
+            top: 50%;
+            transform: translateY(-50%);
+            width: 0;
+            height: 0;
+            border-top: 6px solid transparent;
+            border-bottom: 6px solid transparent;
+            border-left: 6px solid #2563eb;
+            z-index: 1;
+        }
+        .cabinet-unit {
+            background-color: #e0f2f7;
+            border: 1px solid #99d6eb;
+            border-radius: 0.5rem;
+            width: 80px;
+            height: 80px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: #0056b3;
+            margin: 0.25rem;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .cabinet-index {
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            font-size: 0.8rem;
+            color: #666;
+            background-color: rgba(255,255,255,0.7);
+            padding: 2px 5px;
+            border-radius: 3px;
+        }
+        .chart-container {
+            position: relative;
+            width: 100%;
+            max-width: 700px; /* Chart max width */
+            margin-left: auto;
+            margin-right: auto;
+            height: 350px; /* Base height for charts */
+            max-height: 450px; /* Max height for charts */
+        }
+        @media (min-width: 768px) {
+            .section-padding {
+                padding: 6rem 0;
+            }
+            .chart-container {
+                height: 400px;
+            }
+        }
+
+        /* Multi-dimensional array specific styles */
+        .grid-visual-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background-color: #fdfdfd;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .grid-visual-logical {
+            display: grid;
+            grid-template-columns: repeat(var(--cols), 1fr);
+            border: 1px solid #ddd;
+            width: fit-content;
+            margin: 0 auto;
+            font-size: 0.9rem;
+            position: relative;
+        }
+        .grid-visual-logical::before {
+            content: '행';
+            position: absolute;
+            top: -25px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-weight: bold;
+            color: #555;
+            font-size: 0.8rem;
+        }
+        .grid-visual-logical::after {
+            content: '열';
+            position: absolute;
+            top: 50%;
+            left: -25px;
+            transform: translateY(-50%);
+            font-weight: bold;
+            color: #555;
+            font-size: 0.8rem;
+        }
+        .grid-cell {
+            background-color: #f0f8ff;
+            border: 1px solid #cceeff;
+            padding: 0.5rem;
+            text-align: center;
+            min-width: 60px;
+            min-height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .memory-row-physical {
+            display: flex;
+            justify-content: center;
+            align-items: flex-end; /* Align addresses at the bottom */
+            margin-top: 1.5rem;
+            position: relative;
+            padding-bottom: 30px; /* Space for addresses */
+            width: 100%;
+            overflow-x: auto; /* Allow scrolling for long memory rows */
+        }
+        .memory-block-physical {
+            background-color: #fffacd;
+            border: 1px solid #daa520;
+            padding: 0.5rem 1rem;
+            margin: 0 0.25rem;
+            border-radius: 0.3rem;
+            font-size: 0.9rem;
+            text-align: center;
+            position: relative;
+            min-width: 70px; /* Ensure blocks are visible */
+        }
+        .memory-address-physical {
+            position: absolute;
+            bottom: -25px;
+            font-size: 0.7rem;
+            color: #555;
+            white-space: nowrap;
+        }
+        .pointer-arith-visual {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 1.5rem;
+            margin-top: 2rem;
+            padding: 1.5rem;
+            background-color: #fdfdfd;
+            border-radius: 0.75rem;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.05);
+        }
+        .pointer-arith-step {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+        .arith-box {
+            background-color: #e6ffe6;
+            border: 2px solid #66bb6a;
+            border-radius: 0.5rem;
+            padding: 0.75rem;
+            text-align: center;
+            min-width: 100px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        .arith-value {
+            font-size: 1.1rem;
+            font-weight: 700;
+            color: #388e3c;
+        }
+        .arith-label {
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 0.25rem;
+        }
+        .arith-memory-segment {
+            display: flex;
+            border: 1px solid #ccc;
+            border-radius: 0.5rem;
+            overflow: hidden;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+        .arith-memory-cell {
+            width: 70px;
+            height: 70px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            border-left: 1px solid #eee;
+            background-color: #ffffff;
+            position: relative;
+        }
+        .arith-memory-cell:first-child {
+            border-left: none;
+        }
+        .arith-memory-cell-value {
+            font-size: 1rem;
+            font-weight: 600;
+            color: #333;
+        }
+        .arith-memory-cell-address {
+            position: absolute;
+            bottom: 2px;
+            font-size: 0.7rem;
+            color: #888;
+        }
+        .current-ptr-cell {
+            background-color: #ffe0b2; /* Light orange for current pointer location */
+            border: 2px solid #ff9800;
+            box-shadow: 0 0 8px rgba(255,152,0,0.5);
+        }
+        .change-highlight {
+            background-color: #ffccbc; /* Light red for changed value */
+            animation: highlightChange 1s ease-out forwards;
+        }
+        @keyframes highlightChange {
+            from { background-color: #ffccbc; }
+            to { background-color: #ffffff; }
+        }
+        .result-box {
+            background-color: #d1f7e0;
+            border: 1px solid #38a169;
+            padding: 0.5rem 1rem;
+            border-radius: 0.3rem;
+            font-size: 0.9rem;
+            font-weight: 600;
+            color: #2f855a;
+        }
+        .output-line {
+            display: flex;
+            align-items: center;
+            justify-content: flex-start;
+            margin-bottom: 0.5rem;
+        }
+        .output-label {
+            min-width: 150px;
+            text-align: right;
+            margin-right: 10px;
+            font-weight: 500;
+        }
+        .output-value {
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body class="text-gray-800">
+    <nav class="bg-blue-600 p-4 shadow-lg sticky top-0 z-50 rounded-b-lg">
+        <div class="container mx-auto flex justify-between items-center px-4">
+            <h1 class="text-2xl font-bold text-white">C 언어 프로그래밍 수업 🚀</h1>
+            <div class="space-x-4">
+                <button onclick="scrollToSection('home')" class="text-white hover:text-blue-200 transition duration-300 ease-in-out px-3 py-2 rounded-md">홈</button>
+                <button onclick="scrollToSection('arrays')" class="text-white hover:text-blue-200 transition duration-300 ease-in-out px-3 py-2 rounded-md">배열 배우기</button>
+                <button onclick="scrollToSection('pointers')" class="text-white hover:text-blue-200 transition duration-300 ease-in-out px-3 py-2 rounded-md">포인터 배우기</button>
+            </div>
+        </div>
+    </nav>
+
+    <main class="container mx-auto px-4 py-8 content-padding-x">
+        <!-- 홈 섹션 -->
+        <section id="home" class="section-padding bg-gradient-to-br from-blue-50 to-indigo-100 rounded-lg shadow-xl mb-12 flex flex-col items-center justify-center min-h-[60vh] text-center">
+            <h2 class="text-5xl font-extrabold text-blue-700 mb-6 animate-fade-in-down">C 언어 배열과 포인터 완전 정복! ✨</h2>
+            <p class="text-xl text-gray-700 mb-8 max-w-2xl leading-relaxed animate-fade-in-up">
+                안녕하세요, 미래의 프로그래머 여러분! 오늘은 C 언어의 핵심 중의 핵심인 <span class="highlight-text">배열</span>과 <span class="highlight-text">포인터</span>에 대해 쉽고 재미있게 배워볼 시간이에요. 컴퓨터가 정보를 어떻게 정리하고, 우리가 그 정보에 어떻게 접근하는지 그 비밀을 파헤쳐 볼까요? 이 페이지를 통해 여러분의 프로그래밍 실력이 한 단계 더 성장할 거예요!
+            </p>
+            <div class="space-x-4 animate-fade-in-up animation-delay-500">
+                <button onclick="scrollToSection('arrays')" class="bg-blue-600 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-105 shadow-lg">배열 배우러 가기 ➡️</button>
+                <button onclick="scrollToSection('pointers')" class="bg-green-500 text-white px-8 py-3 rounded-full text-lg font-semibold hover:bg-green-600 transition duration-300 ease-in-out transform hover:scale-105 shadow-lg">포인터 배우러 가기 ➡️</button>
+            </div>
+        </section>
+
+        <!-- 배열 섹션 -->
+        <section id="arrays" class="section-padding bg-white rounded-lg shadow-xl mb-12">
+            <h2 class="text-4xl font-bold text-blue-600 mb-8 text-center">2. 배열 (Arrays) - 번호 붙은 사물함 📦</h2>
+            <p class="text-lg mb-6 leading-relaxed">
+                배열은 마치 <span class="highlight-text">도서관의 연이어진 사물함들</span>이나 <span class="highlight-text">기차의 나란히 놓인 좌석들</span>과 같아요. 이 섹션에서는 배열이 무엇인지, 어떻게 만들고 사용하는지 자세히 알아볼 거예요. 컴퓨터 메모리 안에 데이터를 정리하는 아주 효율적인 방법이랍니다.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-8 items-start mb-12">
+                <div>
+                    <h3 class="text-3xl font-semibold text-blue-500 mb-4">2.1. 배열이란? 🤔</h3>
+                    <p class="text-base mb-4">
+                        상상해 보세요: 여러분의 책들을 보관할 사물함들이 일렬로 쭉 늘어서 있어요. 각각의 사물함은 고유한 번호(인덱스)를 가지고 데이터를 저장해요. 중요한 건, 이 사물함들이 0번, 1번, 2번... 처럼 <span class="highlight-text">순서대로 번호가 붙어있다</span>는 거예요! C 언어에서는 이 번호가 0부터 시작한다는 점만 기억하면 돼요.
+                        배열은 이렇게 <span class="highlight-text">같은 종류의 데이터를 여러 개 저장할 수 있는 특별한 저장 공간</span>이랍니다.
+                    </p>
+                    <div class="flex flex-wrap justify-center p-4 bg-gray-50 rounded-lg shadow-inner">
+                        <div class="cabinet-unit">
+                            <span class="cabinet-index">0</span>
+                            <div>📚</div>
+                            <div class="text-sm">90</div>
+                        </div>
+                        <div class="cabinet-unit">
+                            <span class="cabinet-index">1</span>
+                            <div>📚</div>
+                            <div class="text-sm">85</div>
+                        </div>
+                        <div class="cabinet-unit">
+                            <span class="cabinet-index">2</span>
+                            <div>📚</div>
+                            <div class="text-sm">92</div>
+                        </div>
+                        <div class="cabinet-unit">
+                            <span class="cabinet-index">3</span>
+                            <div>📚</div>
+                            <div class="text-sm">78</div>
+                        </div>
+                        <div class="cabinet-unit">
+                            <span class="cabinet-index">4</span>
+                            <div>📚</div>
+                            <div class="text-sm">95</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-center text-gray-600 mt-2">
+                        💡 각 사물함은 고유한 번호(인덱스)를 가지고 데이터를 저장해요.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-semibold text-blue-500 mb-4">2.2. 배열 선언 및 접근 ✍️</h3>
+                    <p class="text-base mb-4">
+                        C 언어에서 배열을 만들 때는 어떤 종류의 데이터(예: 숫자, 글자)를 저장할지, 그리고 사물함을 몇 개 만들지를 정해줘야 해요. 예를 들어, 5명의 친구들 점수를 저장하는 사물함을 만들고 싶다면 이렇게 선언할 수 있어요:
+                    </p>
+                    <div class="code-block-container mb-4 flex flex-col items-end">
+                        <div class="code-block w-full">
+                            <code id="array-code-1">
+<pre>int scores[5]; <span class="text-gray-500">// 5개의 칸을 가진 점수 보관함 (사물함) 만들기!</span></pre>
+                            </code>
+                        </div>
+                        <button onclick="copyCode('array-code-1')" class="mt-2 px-4 py-2 bg-blue-500 text-white text-sm rounded-md hover:bg-blue-600 transition-colors duration-200">코드 복사</button>
+                    </div>
+
+                    <p class="text-base mb-4">
+                        사물함에 접근해서 점수를 넣거나 꺼낼 때는 번호를 사용해요. 0번 사물함, 1번 사물함... 이렇게요. 아래 예시 코드를 통해 어떻게 사용하는지 알아볼까요?
+                    </p>
+                    <div class="code-block-container flex flex-col items-end">
+                        <div class="code-block w-full">
+                            <code id="array-code-2">
+<pre>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int scores[5]; <span class="text-gray-500">// 5개의 칸을 가진 점수 보관함 (사물함) 만들기!</span>
+
+    scores[0] = 90; <span class="text-gray-500">// 첫 번째 칸 (0번)에 90점 넣기</span>
+    scores[1] = 85; <span class="text-gray-500">// 두 번째 칸 (1번)에 85점 넣기</span>
+    scores[2] = 92;
+    scores[3] = 78;
+    scores[4] = 95;
+
+    printf("첫 번째 친구의 점수: %d\n", scores[0]); <span class="text-gray-500">// 첫 번째 칸 점수 확인</span>
+    printf("세 번째 친구의 점수: %d\n", scores[2]); <span class="text-gray-500">// 세 번째 칸 점수 확인</span>
+
+    scores[1] = 100; <span class="text-gray-500">// 두 번째 친구 점수를 100점으로 바꾸기</span>
+    printf("수정된 두 번째 친구의 점수: %d\n", scores[1]);
+
+    return 0;
+}
+</pre>
+                            </code>
+                        </div>
+                        <button onclick="copyCode('array-code-2')" class="mt-2 px-4 py-2 bg-blue-500 text-white text-sm rounded-md hover:bg-blue-600 transition-colors duration-200">코드 복사</button>
+                    </div>
+                    <div class="code-output">
+                        <p class="font-bold">실행 결과:</p>
+                        <pre>첫 번째 친구의 점수: 90
+세 번째 친구의 점수: 92
+수정된 두 번째 친구의 점수: 100</pre>
+                    </div>
+                    <h4 class="text-2xl font-semibold text-blue-400 mb-4 mt-8 text-center">배열 접근 시뮬레이션 📈</h4>
+                    <p class="text-base mb-4 text-center">원하는 점수를 입력하고 '시뮬레이션 실행' 버튼을 눌러보세요!</p>
+                    <div class="p-4 bg-yellow-50 rounded-lg shadow-inner border border-yellow-300">
+                        <div class="flex flex-wrap justify-center gap-2 mb-4">
+                            <label class="block text-sm font-medium text-gray-700">scores[0]: <input type="number" id="input-score-0" value="90" class="mt-1 block w-20 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"></label>
+                            <label class="block text-sm font-medium text-gray-700">scores[1]: <input type="number" id="input-score-1" value="85" class="mt-1 block w-20 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"></label>
+                            <label class="block text-sm font-medium text-gray-700">scores[2]: <input type="number" id="input-score-2" value="92" class="mt-1 block w-20 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"></label>
+                            <label class="block text-sm font-medium text-gray-700">scores[3]: <input type="number" id="input-score-3" value="78" class="mt-1 block w-20 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"></label>
+                            <label class="block text-sm font-medium text-gray-700">scores[4]: <input type="number" id="input-score-4" value="95" class="mt-1 block w-20 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"></label>
+                        </div>
+                        <button onclick="simulateArrayAccess()" class="w-full px-4 py-2 bg-green-500 text-white text-lg rounded-md hover:bg-green-600 transition-colors duration-200 shadow-md">시뮬레이션 실행</button>
+
+                        <div id="array-simulation-output" class="code-output mt-4 hidden">
+                            <p class="font-bold">시뮬레이션 실행 결과:</p>
+                            <pre id="array-sim-text-output"></pre>
+                        </div>
+                        <div id="array-simulation-visual" class="flex flex-wrap justify-center p-4 bg-yellow-100 rounded-lg shadow-inner border border-yellow-400 mt-4">
+                            <!-- 시뮬레이션 결과 사물함들이 여기에 동적으로 삽입됩니다. -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-3xl font-semibold text-blue-500 mb-4 text-center">2.3. 배열의 주요 특징 ✨</h3>
+            <ul class="list-disc list-inside text-lg space-y-2 max-w-3xl mx-auto bg-blue-50 p-6 rounded-lg shadow-md">
+                <li><span class="highlight-text">같은 종류의 데이터</span>만 저장할 수 있어요.</li>
+                <li>배열을 선언할 때 <span class="highlight-text">크기를 미리 정해야 해요.</span> 한 번 정하면 바꿀 수 없어요.</li>
+                <li>각 칸에는 <span class="highlight-text">0부터 시작하는 번호(인덱스)</span>가 붙어있어요.</li>
+                <li>배열 이름만 단독으로 사용하면, 배열의 <span class="highlight-text">첫 번째 칸의 주소</span>를 의미해요! (포인터와 관련 깊어요)</li>
+            </ul>
+
+            <h3 class="text-3xl font-semibold text-blue-500 mb-4 mt-12 text-center">2.4. 다차원 배열 - 펼쳐지는 사물함 🌐</h3>
+            <p class="text-lg mb-6 leading-relaxed">
+                배열은 1차원만 있는 게 아니에요. 마치 여러 줄로 된 사물함이나 영화관의 좌석처럼, <span class="highlight-text">행과 열</span>을 가지는 배열을 만들 수도 있어요! 이것을 <span class="highlight-text">다차원 배열</span>이라고 부른답니다. 특히 2차원 배열은 수학의 '행렬'처럼 데이터를 정리할 때 유용해요.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-8 items-start mb-12">
+                <div>
+                    <h4 class="text-2xl font-semibold text-blue-400 mb-4">논리적 표현: 행과 열 📐</h4>
+                    <p class="text-base mb-4">
+                        우리 눈에는 2차원 배열이 아래 그림처럼 행과 열로 된 표(행렬)처럼 보여요. `nums[행][열]` 같은 형식으로 데이터에 접근하죠.
+                    </p>
+                    <div class="grid-visual-container">
+                        <div class="grid-visual-logical" style="--cols:3;">
+                            <div class="grid-cell">nums[0][0]<br/>(1)</div>
+                            <div class="grid-cell">nums[0][1]<br/>(2)</div>
+                            <div class="grid-cell">nums[0][2]<br/>(3)</div>
+                            <div class="grid-cell">nums[1][0]<br/>(4)</div>
+                            <div class="grid-cell">nums[1][1]<br/>(5)</div>
+                            <div class="grid-cell">nums[1][2]<br/>(6)</div>
+                            <div class="grid-cell">nums[2][0]<br/>(7)</div>
+                            <div class="grid-cell">nums[2][1]<br/>(8)</div>
+                            <div class="grid-cell">nums[2][2]<br/>(9)</div>
+                        </div>
+                        <p class="text-sm text-center text-gray-600">
+                            💡 행과 열로 구성된 표처럼 보여요.
+                        </p>
+                    </div>
+                </div>
+                <div>
+                    <h4 class="text-2xl font-semibold text-blue-400 mb-4">물리적 표현: 일렬로 늘어선 메모리 💾</h4>
+                    <p class="text-base mb-4">
+                        하지만 컴퓨터 메모리 안에서는 모든 데이터가 <span class="highlight-text">일렬로 쭉 이어진 공간</span>에 저장된답니다! 2차원 배열도 결국엔 긴 1차원 배열처럼 저장되는 거죠.
+                    </p>
+                    <div class="grid-visual-container">
+                        <div class="memory-row-physical">
+                            <div class="memory-block-physical">1<span class="memory-address-physical">0x1000</span></div>
+                            <div class="memory-block-physical">2<span class="memory-address-physical">0x1004</span></div>
+                            <div class="memory-block-physical">3<span class="memory-address-physical">0x1008</span></div>
+                            <div class="memory-block-physical">4<span class="memory-address-physical">0x100C</span></div>
+                            <div class="memory-block-physical">5<span class="memory-address-physical">0x1010</span></div>
+                            <div class="memory-block-physical">6<span class="memory-address-physical">0x1014</span></div>
+                            <div class="memory-block-physical">7<span class="memory-address-physical">0x1018</span></div>
+                            <div class="memory-block-physical">8<span class="memory-address-physical">0x101C</span></div>
+                            <div class="memory-block-physical">9<span class="memory-address-physical">0x1020</span></div>
+                            <div class="memory-block-physical">...</div>
+                        </div>
+                        <p class="text-sm text-center text-gray-600">
+                            💡 실제 메모리에는 데이터가 일렬로 저장돼요.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+            <h4 class="text-2xl font-semibold text-blue-400 mb-4">다차원 배열 초기화 예시 📝</h4>
+            <div class="code-block-container flex flex-col items-end">
+                <div class="code-block w-full">
+                    <code id="array-code-3">
+<pre>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    <span class="text-gray-500">// 2차원 배열 선언과 동시에 초기화 (3행 4열)</span>
+    int nums[3][4] = {
+        {1, 2, 3, 4},       <span class="text-gray-500">// 0번 행</span>
+        {5, 6, 7, 8},       <span class="text-gray-500">// 1번 행</span>
+        {9, 10, 11, 12}     <span class="text-gray-500">// 2번 행</span>
+    };
+
+    printf("nums[0][0]의 값: %d\n", nums[0][0]); <span class="text-gray-500">// 1 출력</span>
+    printf("nums[1][2]의 값: %d\n", nums[1][2]); <span class="text-gray-500">// 7 출력</span>
+    printf("nums[2][3]의 값: %d\n", nums[2][3]); <span class="text-gray-500">// 12 출력</span>
+
+    <span class="text-gray-500">// 초기화 값이 부족하면 남는 공간은 0으로 채워져요</span>
+    int partial_nums[2][3] = {
+        {1, 2},
+        {4}
+    };
+    printf("\npartial_nums[0][2]의 값 (초기화되지 않은): %d\n", partial_nums[0][2]); <span class="text-gray-500">// 0 출력</span>
+    printf("partial_nums[1][1]의 값 (초기화되지 않은): %d\n", partial_nums[1][1]); <span class="text-gray-500">// 0 출력</span>
+
+    return 0;
+}
+</pre>
+                    </code>
+                </div>
+                <button onclick="copyCode('array-code-3')" class="mt-2 px-4 py-2 bg-blue-500 text-white text-sm rounded-md hover:bg-blue-600 transition-colors duration-200">코드 복사</button>
+            </div>
+            <div class="code-output">
+                <p class="font-bold">실행 결과:</p>
+                <pre>nums[0][0]의 값: 1
+nums[1][2]의 값: 7
+nums[2][3]의 값: 12
+
+partial_nums[0][2]의 값 (초기화되지 않은): 0
+partial_nums[1][1]의 값 (초기화되지 않은): 0</pre>
+            </div>
+            <h4 class="text-2xl font-semibold text-blue-400 mb-4 mt-8 text-center">코드 실행 후 배열 상태 시뮬레이션 📊</h4>
+            <p class="text-base mb-4 text-center">위 코드가 실행된 후 `nums` 배열의 논리적/물리적 상태 변화를 확인해 보세요!</p>
+            <div class="grid-visual-container">
+                <div class="grid-visual-logical" style="--cols:4;">
+                    <div class="grid-cell">1</div>
+                    <div class="grid-cell">2</div>
+                    <div class="grid-cell">3</div>
+                    <div class="grid-cell">4</div>
+                    <div class="grid-cell">5</div>
+                    <div class="grid-cell">6</div>
+                    <div class="grid-cell">7</div>
+                    <div class="grid-cell">8</div>
+                    <div class="grid-cell">9</div>
+                    <div class="grid-cell">10</div>
+                    <div class="grid-cell">11</div>
+                    <div class="grid-cell">12</div>
+                </div>
+                <p class="text-sm text-center text-gray-600 mt-2">
+                    💡 `nums[3][4]` 배열의 최종 논리적 상태.
+                </p>
+            </div>
+            <div class="grid-visual-container mt-8">
+                <div class="memory-row-physical">
+                    <div class="memory-block-physical">1<span class="memory-address-physical">0x1000</span></div>
+                    <div class="memory-block-physical">2<span class="memory-address-physical">0x1004</span></div>
+                    <div class="memory-block-physical">3<span class="memory-address-physical">0x1008</span></div>
+                    <div class="memory-block-physical">4<span class="memory-address-physical">0x100C</span></div>
+                    <div class="memory-block-physical">5<span class="memory-address-physical">0x1010</span></div>
+                    <div class="memory-block-physical">6<span class="memory-address-physical">0x1014</span></div>
+                    <div class="memory-block-physical">7<span class="memory-address-physical">0x1018</span></div>
+                    <div class="memory-block-physical">8<span class="memory-address-physical">0x101C</span></div>
+                    <div class="memory-block-physical">9<span class="memory-address-physical">0x1020</span></div>
+                    <div class="memory-block-physical">10<span class="memory-address-physical">0x1024</span></div>
+                    <div class="memory-block-physical">11<span class="memory-address-physical">0x1028</span></div>
+                    <div class="memory-block-physical">12<span class="memory-address-physical">0x102C</span></div>
+                </div>
+                <p class="text-sm text-center text-gray-600 mt-2">
+                    💡 메모리에 `nums` 배열이 일렬로 저장된 최종 물리적 상태.
+                </p>
+            </div>
+            <div class="grid-visual-container mt-8">
+                <p class="font-bold text-gray-700 mb-4">`partial_nums[2][3]` 배열의 최종 상태:</p>
+                <div class="grid-visual-logical" style="--cols:3;">
+                    <div class="grid-cell">1</div>
+                    <div class="grid-cell">2</div>
+                    <div class="grid-cell change-highlight">0</div>
+                    <div class="grid-cell">4</div>
+                    <div class="grid-cell change-highlight">0</div>
+                    <div class="grid-cell change-highlight">0</div>
+                </div>
+                <p class="text-sm text-center text-gray-600 mt-2">
+                    💡 초기화되지 않은 칸은 0으로 자동 채워진 것을 확인할 수 있어요.
+                </p>
+            </div>
+        </section>
+
+        <!-- 포인터 섹션 -->
+        <section id="pointers" class="section-padding bg-white rounded-lg shadow-xl">
+            <h2 class="text-4xl font-bold text-green-600 mb-8 text-center">3. 포인터 (Pointers) - 편지함 주소 🗺️</h2>
+            <p class="text-lg mb-6 leading-relaxed">
+                이제 C 언어를 더욱 강력하게 만들어주는 <span class="highlight-text">포인터</span>에 대해 알아볼 시간이에요. 포인터는 마치 <span class="highlight-text">컴퓨터 메모리 속 데이터들의 '집 주소'를 저장하는 특별한 변수</span>라고 생각할 수 있어요. 이 섹션에서는 포인터가 무엇인지, 주소와 값을 다루는 방법을 배워볼 거예요.
+            </p>
+
+            <div class="grid md:grid-cols-2 gap-8 items-start mb-12">
+                <div>
+                    <h3 class="text-3xl font-semibold text-green-500 mb-4">3.1. 포인터란? 🤔</h3>
+                    <p class="text-base mb-4">
+                        여러분 집 앞에 편지함이 있다고 상상해 보세요. 편지함 자체는 편지(데이터)를 담는 곳이죠. 그런데 우체부 아저씨가 편지를 배달하려면 뭐가 필요할까요? 바로 <span class="highlight-text">편지함의 정확한 주소</span>가 필요해요!
+                        C 언어에서 일반 변수는 편지함 자체(값을 저장)라고 생각할 수 있어요. 반면에 <span class="highlight-text">포인터 변수</span>는 이 편지함의 <span class="highlight-text">주소(메모리 주소)</span>를 저장하는 아주 특별한 변수랍니다. 포인터는 값을 직접 저장하기보다는, '어디에 그 값이 저장되어 있는지'를 알려주는 길잡이 역할을 해요.
+                    </p>
+                    <div class="flex items-center justify-center p-4 bg-gray-50 rounded-lg shadow-inner">
+                        <div class="box-visual">
+                            <div class="text-xl font-bold">ptr</div>
+                            <div class="text-sm text-gray-600">(포인터 변수)</div>
+                            <div class="arrow-connector"></div>
+                            <div class="arrow-head"></div>
+                        </div>
+                        <div class="box-visual ml-8">
+                            <div class="text-xl font-bold">10</div>
+                            <div class="text-sm text-gray-600">(num 변수 값)</div>
+                            <div class="text-xs text-gray-500 mt-1">주소: 0x1000</div>
+                        </div>
+                    </div>
+                    <p class="text-sm text-center text-gray-600 mt-2">
+                        💡 포인터(ptr)는 'num' 변수가 저장된 메모리 '주소'를 가리켜요.
+                    </p>
+                </div>
+                <div>
+                    <h3 class="text-3xl font-semibold text-green-500 mb-4">3.2. 주소 연산자 (&amp;)와 간접 참조 연산자 (*) ⚡</h3>
+                    <p class="text-base mb-4">
+                        포인터를 사용할 때 가장 중요한 두 가지 연산자가 있어요.
+                    </p>
+                    <ul class="list-disc list-inside text-base space-y-2 mb-4 bg-green-50 p-4 rounded-lg shadow-md">
+                        <li>
+                            <span class="highlight-text">&amp; (주소 연산자):</span> 이 연산자는 <span class="highlight-text">'어떤 변수의 주소를 알아내는 방법'</span>이에요. 마치 "이 편지함(&amp;)의 주소가 뭐야?" 하고 묻는 것과 같아요. `&amp;num`이라고 하면 `num`이라는 변수의 메모리 주소를 알려줘요.
+                        </li>
+                        <li>
+                            <span class="highlight-text">* (간접 참조 연산자):</span> 이 연산자는 <span class="highlight-text">'그 주소로 가서 내용물을 확인하는 방법'</span>이에요. "이 주소(*)로 가서 편지함 안에 뭐가 들어있는지 확인해 봐!"라고 명령하는 것과 같죠. `*p`라고 하면 `p`라는 포인터 변수가 가리키는 메모리 주소에 저장된 <span class="highlight-text">실제 값</span>을 가져와요.
+                        </li>
+                    </ul>
+                    <div class="code-block-container flex flex-col items-end">
+                        <div class="code-block w-full">
+                            <code id="pointer-code-1">
+<pre>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int num = 10; <span class="text-gray-500">// num이라는 편지함에 10을 넣었어요.</span>
+    int *p;       <span class="text-gray-500">// p라는 포인터 변수를 선언했어요. (정수형 주소를 저장할 거예요!)</span>
+
+    p = &amp;num;     <span class="text-gray-500">// p에게 num 편지함의 주소를 알려줘서 저장하게 했어요.</span>
+
+    printf("변수 num의 값 = %d\n", num);
+    printf("변수 num의 주소 = %u\n", &amp;num);
+    printf("포인터 p가 저장하고 있는 주소 = %u\n", p);
+    printf("포인터 p가 가리키는 값 = %d\n", *p);
+
+    *p = 20; <span class="text-gray-500">// p가 가리키는 곳(num 편지함)의 내용물을 20으로 바꿔!</span>
+    printf("바뀐 변수 num의 값 = %d\n", num);
+
+    return 0;
+}
+</pre>
+                            </code>
+                        </div>
+                        <button onclick="copyCode('pointer-code-1')" class="mt-2 px-4 py-2 bg-blue-500 text-white text-sm rounded-md hover:bg-blue-600 transition-colors duration-200">코드 복사</button>
+                    </div>
+                    <div class="code-output">
+                        <p class="font-bold">실행 결과:</p>
+                        <pre>변수 num의 값 = 10
+변수 num의 주소 = (임의의 주소, 예: 4202500)
+포인터 p가 저장하고 있는 주소 = (임의의 주소, 예: 4202500)
+포인터 p가 가리키는 값 = 10
+바뀐 변수 num의 값 = 20</pre>
+                    </div>
+                    <h4 class="text-2xl font-semibold text-green-400 mb-4 mt-8 text-center">주소 연산 시뮬레이션 📈</h4>
+                    <p class="text-base mb-4 text-center">`num` 변수의 초기값을 입력하고 '시뮬레이션 실행' 버튼을 눌러보세요!</p>
+                    <div class="p-4 bg-yellow-50 rounded-lg shadow-inner border border-yellow-300">
+                        <div class="flex justify-center items-center gap-4 mb-4">
+                            <label class="block text-sm font-medium text-gray-700">num 초기값: <input type="number" id="input-num-value" value="10" class="mt-1 block w-24 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"></label>
+                        </div>
+                        <button onclick="simulatePointerAccess()" class="w-full px-4 py-2 bg-green-500 text-white text-lg rounded-md hover:bg-green-600 transition-colors duration-200 shadow-md">시뮬레이션 실행</button>
+
+                        <div id="pointer-simulation-output" class="code-output mt-4 hidden">
+                            <p class="font-bold">시뮬레이션 실행 결과:</p>
+                            <pre id="pointer-sim-text-output"></pre>
+                        </div>
+                        <div id="pointer-simulation-visual" class="flex items-center justify-center p-4 bg-yellow-100 rounded-lg shadow-inner border border-yellow-400 mt-4">
+                            <!-- 시뮬레이션 결과 비주얼이 여기에 동적으로 삽입됩니다. -->
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <h3 class="text-3xl font-semibold text-green-500 mb-4 mt-12 text-center">3.3. 포인터 연산 ➕➖</h3>
+            <p class="text-lg mb-6 leading-relaxed">
+                포인터도 덧셈(`+`)이나 뺄셈(`-`) 연산을 할 수 있어요! 하지만 일반 숫자처럼 1씩 더하거나 빼는 게 아니랍니다. 포인터는 자신이 가리키는 <span class="highlight-text">자료형의 크기만큼 주소가 이동</span>해요. 예를 들어, `int`형 포인터에 1을 더하면, 실제 메모리 주소는 `int`의 크기(보통 4바이트)만큼 증가한답니다.
+            </p>
+
+            <div class="pointer-arith-visual">
+                <div class="pointer-arith-step">
+                    <div class="arith-box">
+                        <div class="arith-value">p</div>
+                        <div class="arith-label">0x1000</div>
+                    </div>
+                    <div style="font-size: 2rem;">➡️</div>
+                    <div class="arith-memory-segment">
+                        <div class="arith-memory-cell current-ptr-cell">
+                            <span class="arith-memory-cell-value">9</span>
+                            <span class="arith-memory-cell-address">0x1000</span>
+                        </div>
+                        <div class="arith-memory-cell">
+                            <span class="arith-memory-cell-value">99</span>
+                            <span class="arith-memory-cell-address">0x1004</span>
+                        </div>
+                        <div class="arith-memory-cell">
+                            <span class="arith-memory-cell-value">999</span>
+                            <span class="arith-memory-cell-address">0x1008</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-700">`p = a;` 초기 상태: `p`는 배열 `a`의 첫 번째 요소(9)를 가리킵니다.</p>
+
+                <div class="pointer-arith-step">
+                    <div class="arith-box">
+                        <div class="arith-value">p</div>
+                        <div class="arith-label">0x1004</div>
+                    </div>
+                    <div style="font-size: 2rem;">➡️</div>
+                    <div class="arith-memory-segment">
+                        <div class="arith-memory-cell">
+                            <span class="arith-memory-cell-value">9</span>
+                            <span class="arith-memory-cell-address">0x1000</span>
+                        </div>
+                        <div class="arith-memory-cell current-ptr-cell">
+                            <span class="arith-memory-cell-value">99</span>
+                            <span class="arith-memory-cell-address">0x1004</span>
+                        </div>
+                        <div class="arith-memory-cell">
+                            <span class="arith-memory-cell-value">999</span>
+                            <span class="arith-memory-cell-address">0x1008</span>
+                        </div>
+                    </div>
+                </div>
+                <p class="text-sm text-gray-700">`p++` 실행 후: `p`는 다음 `int` 공간(4바이트 이동)으로 이동하여 99를 가리킵니다.</p>
+            </div>
+            <p class="text-sm text-center text-gray-600 mb-6">
+                💡 포인터 `ptr`이 `++` 연산을 하면, 가리키는 자료형(int)의 크기(4바이트)만큼 주소가 증가하여 다음 `int` 공간을 가리키게 돼요.
+            </p>
+
+            <h4 class="text-2xl font-semibold text-green-400 mb-4">포인터 연산 예시 코드와 결과 분석 🔍</h4>
+            <p class="text-base mb-4">
+                다양한 포인터 연산자와 배열 이름을 사용했을 때의 결과는 어떻게 달라질까요? 아래 코드를 보면서 함께 이해해 봅시다.
+            </p>
+            <div class="code-block-container flex flex-col items-end">
+                <div class="code-block w-full">
+                    <code id="pointer-code-2">
+<pre>#include &lt;stdio.h&gt;
+
+int main(void)
+{
+    int a[3] = {9, 99, 999}; <span class="text-gray-500">// int형 배열 a 선언 및 초기화</span>
+    int *p;                 <span class="text-gray-500">// int형 포인터 p 선언</span>
+
+    p = a; <span class="text-gray-500">// 포인터 p가 배열 a의 첫 번째 요소 주소를 가리키게 합니다 (p = &a[0]과 같음)</span>
+
+    printf("1. *(p) + 1       = %d\n", (*p) + 1);
+    printf("2. *(++p)       = %d\n", *(++p));
+    printf("3. ++(*p)       = %d\n", ++(*p));
+    printf("4. (*p) = (*p) + 1 = %d\n", (*p) = (*p) + 1);
+    printf("5. *(p++)       = %d\n", *(p++));
+    printf("현재 p가 가리키는 값: %d\n", *p);
+
+    return 0;
+}
+</pre>
+                    </code>
+                </div>
+                <button onclick="copyCode('pointer-code-2')" class="mt-2 px-4 py-2 bg-blue-500 text-white text-sm rounded-md hover:bg-blue-600 transition-colors duration-200">코드 복사</button>
+            </div>
+            <div class="code-output">
+                <p class="font-bold">실행 결과 (임의의 주소는 실제 실행 환경에 따라 달라질 수 있습니다):</p>
+                <pre>1. *(p) + 1       = 10
+2. *(++p)       = 99
+3. ++(*p)       = 100
+4. (*p) = (*p) + 1 = 101
+5. *(p++)       = 101
+현재 p가 가리키는 값: 999</pre>
+            </div>
+
+            <h4 class="text-2xl font-semibold text-green-400 mb-4 mt-8 text-center">포인터 연산 시뮬레이션 💡</h4>
+            <p class="text-base mb-4 text-center">배열 `a`의 초기값을 입력하고 '시뮬레이션 실행' 버튼을 눌러보세요!</p>
+            <div class="p-4 bg-yellow-50 rounded-lg shadow-inner border border-yellow-300">
+                <div class="flex flex-wrap justify-center gap-2 mb-4">
+                    <label class="block text-sm font-medium text-gray-700">a[0]: <input type="number" id="input-a-0" value="9" class="mt-1 block w-20 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"></label>
+                    <label class="block text-sm font-medium text-gray-700">a[1]: <input type="number" id="input-a-1" value="99" class="mt-1 block w-20 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"></label>
+                    <label class="block text-sm font-medium text-gray-700">a[2]: <input type="number" id="input-a-2" value="999" class="mt-1 block w-20 rounded-md border-gray-300 shadow-sm focus:border-blue-300 focus:ring focus:ring-blue-200 focus:ring-opacity-50"></label>
+                </div>
+                <button onclick="simulatePointerArithmetic()" class="w-full px-4 py-2 bg-green-500 text-white text-lg rounded-md hover:bg-green-600 transition-colors duration-200 shadow-md">시뮬레이션 실행</button>
+
+                <div id="arith-simulation-output" class="code-output mt-4 hidden">
+                    <p class="font-bold">시뮬레이션 실행 결과:</p>
+                    <pre id="arith-sim-text-output"></pre>
+                </div>
+                <h5 class="text-lg font-semibold text-gray-700 mt-8 text-center">최종 메모리 상태:</h5>
+                <div id="arith-simulation-visual" class="flex items-center justify-center p-4 bg-yellow-100 rounded-lg shadow-inner border border-yellow-400 mt-4">
+                    <!-- 시뮬레이션 결과 비주얼이 여기에 동적으로 삽입됩니다. -->
+                </div>
+            </div>
+
+
+            <h3 class="text-3xl font-semibold text-green-500 mb-4 text-center">3.4. 포인터의 주요 특징 🌟</h3>
+            <ul class="list-disc list-inside text-lg space-y-2 max-w-3xl mx-auto bg-green-50 p-6 rounded-lg shadow-md">
+                <li><span class="highlight-text">다른 변수의 메모리 주소</span>를 저장하는 변수예요.</li>
+                <li>사용하기 전에 <span class="highlight-text">반드시 초기화</span>해야 해요. (어떤 주소를 가리킬지 정해야 해요.)</li>
+                <li>포인터의 자료형은 <span class="highlight-text">가리키려는 변수의 자료형과 같아야 해요.</span> (int를 가리키면 int 포인터)</li>
+                <li><span class="highlight-text">배열의 이름</span>은 그 배열의 <span class="highlight-text">첫 번째 요소의 주소</span>를 의미하므로, 배열 이름은 포인터처럼 사용될 수 있어요!</li>
+                <li>포인터는 함수에서 원본 데이터를 직접 수정할 수 있게 해주는 등 <span class="highlight-text">매우 강력한 기능</span>을 제공하지만, 잘못 사용하면 <span class="highlight-text">오류를 발생시키기 쉬우니 주의</span>해야 해요.</li>
+            </ul>
+        </section>
+    </main>
+
+    <footer class="bg-blue-600 text-white p-6 text-center rounded-t-lg mt-12">
+        <p class="text-lg">&copy; 2025 C 언어 프로그래밍 수업 자료. 여러분의 프로그래밍 여정을 응원합니다! 🎉</p>
+    </footer>
+
+    <script>
+        // 섹션 스크롤 함수
+        function scrollToSection(id) {
+            document.getElementById(id).scrollIntoView({
+                behavior: 'smooth'
+            });
+        }
+
+        // 코드 복사 함수
+        function copyCode(elementId) {
+            const codeElement = document.getElementById(elementId);
+            if (codeElement) {
+                const textToCopy = codeElement.textContent || codeElement.innerText;
+                const tempTextArea = document.createElement('textarea');
+                tempTextArea.value = textToCopy;
+                document.body.appendChild(tempTextArea);
+                tempTextArea.select();
+                document.execCommand('copy'); // clipboard API 대신 execCommand 사용 (iframe 호환성)
+                document.body.removeChild(tempTextArea);
+                alert('코드가 클립보드에 복사되었습니다!'); // 사용자에게 피드백
+            } else {
+                console.error(`Element with ID '${elementId}' not found.`);
+            }
+        }
+
+        // 배열 접근 시뮬레이션 함수
+        function simulateArrayAccess() {
+            let scores = [];
+            for (let i = 0; i < 5; i++) {
+                const inputElement = document.getElementById(`input-score-${i}`);
+                scores[i] = parseInt(inputElement.value, 10);
+                if (isNaN(scores[i])) {
+                    alert('유효하지 않은 입력값이 있습니다. 숫자를 입력해주세요.');
+                    return;
+                }
+            }
+
+            // 시뮬레이션 코드 로직
+            const initialScore1 = scores[1]; // 변경 전 scores[1] 값 저장
+            scores[1] = 100; // scores[1] 변경
+
+            let output = `첫 번째 친구의 점수: ${scores[0]}\n`;
+            output += `세 번째 친구의 점수: ${scores[2]}\n`;
+            output += `수정된 두 번째 친구의 점수: ${scores[1]}\n`;
+
+            document.getElementById('array-sim-text-output').textContent = output;
+            document.getElementById('array-simulation-output').classList.remove('hidden');
+
+            // 시뮬레이션 시각화 업데이트
+            const visualContainer = document.getElementById('array-simulation-visual');
+            visualContainer.innerHTML = ''; // 기존 내용 지우기
+
+            for (let i = 0; i < scores.length; i++) {
+                const isChanged = (i === 1 && initialScore1 !== scores[1]); // scores[1]만 변경됨
+                const cabinetClass = `cabinet-unit ${isChanged ? 'change-highlight' : ''}`;
+                const valueColorClass = isChanged ? 'text-red-700' : 'text-blue-700';
+
+                const cabinetHtml = `
+                    <div class="${cabinetClass}">
+                        <span class="cabinet-index">${i}</span>
+                        <div>📚</div>
+                        <div class="text-sm font-bold ${valueColorClass}">${scores[i]}</div>
+                    </div>
+                `;
+                visualContainer.insertAdjacentHTML('beforeend', cabinetHtml);
+            }
+        }
+
+        // 포인터 접근 시뮬레이션 함수
+        function simulatePointerAccess() {
+            let num = parseInt(document.getElementById('input-num-value').value, 10);
+            if (isNaN(num)) {
+                alert('유효하지 않은 입력값입니다. 숫자를 입력해주세요.');
+                return;
+            }
+
+            const initialNum = num;
+            const simulatedAddress = '0x1000'; // 시뮬레이션 주소
+            const pointerValueBeforeChange = num;
+
+            // 시뮬레이션 코드 로직
+            num = 20; // *p = 20; 에 의한 변경 시뮬레이션
+
+            let output = `변수 num의 값 = ${initialNum}\n`;
+            output += `변수 num의 주소 = ${simulatedAddress}\n`;
+            output += `포인터 p가 저장하고 있는 주소 = ${simulatedAddress}\n`;
+            output += `포인터 p가 가리키는 값 = ${pointerValueBeforeChange}\n`;
+            output += `바뀐 변수 num의 값 = ${num}\n`;
+
+            document.getElementById('pointer-sim-text-output').textContent = output;
+            document.getElementById('pointer-simulation-output').classList.remove('hidden');
+
+            // 시뮬레이션 시각화 업데이트
+            const visualContainer = document.getElementById('pointer-simulation-visual');
+            visualContainer.innerHTML = ''; // 기존 내용 지우기
+
+            const numBoxClass = (initialNum !== num) ? 'box-visual ml-8 change-highlight' : 'box-visual ml-8';
+            const numValueClass = (initialNum !== num) ? 'text-xl font-bold text-red-700' : 'text-xl font-bold';
+
+            const visualHtml = `
+                <div class="box-visual">
+                    <div class="text-xl font-bold">ptr</div>
+                    <div class="text-sm text-gray-600">(포인터 변수)</div>
+                    <div class="arrow-connector"></div>
+                    <div class="arrow-head"></div>
+                </div>
+                <div class="${numBoxClass}">
+                    <div class="${numValueClass}">${num}</div>
+                    <div class="text-sm text-gray-600">(num 변수 값)</div>
+                    <div class="text-xs text-gray-500 mt-1">주소: ${simulatedAddress}</div>
+                </div>
+            `;
+            visualContainer.insertAdjacentHTML('beforeend', visualHtml);
+        }
+
+        // 포인터 연산 시뮬레이션 함수
+        function simulatePointerArithmetic() {
+            let a = [];
+            for (let i = 0; i < 3; i++) {
+                const inputElement = document.getElementById(`input-a-${i}`);
+                a[i] = parseInt(inputElement.value, 10);
+                if (isNaN(a[i])) {
+                    alert('유효하지 않은 입력값이 있습니다. 숫자를 입력해주세요.');
+                    return;
+                }
+            }
+
+            let p_index = 0; // p는 a[0]을 가리킴 (초기화)
+            let current_p_value = a[p_index];
+
+            let output = "";
+            const INT_SIZE = 4; // int가 4바이트라고 가정
+
+            // 1. *(p) + 1
+            let result1 = current_p_value + 1;
+            output += `1. *(p) + 1       = ${result1}\n`;
+
+            // 2. *(++p)
+            p_index++; // p의 주소 먼저 증가 (a[1]으로 이동)
+            current_p_value = a[p_index];
+            let result2 = current_p_value;
+            output += `2. *(++p)       = ${result2}\n`;
+
+            // 3. ++(*p)
+            a[p_index]++; // p가 가리키는 값 (a[1])을 1 증가
+            current_p_value = a[p_index];
+            let result3 = current_p_value;
+            output += `3. ++(*p)       = ${result3}\n`;
+
+            // 4. (*p) = (*p) + 1
+            a[p_index] = a[p_index] + 1; // p가 가리키는 값 (a[1])을 1 증가 후 재할당
+            current_p_value = a[p_index];
+            let result4 = current_p_value;
+            output += `4. (*p) = (*p) + 1 = ${result4}\n`;
+
+            // 5. *(p++)
+            let result5 = current_p_value; // p가 가리키는 현재 값 가져오기
+            p_index++; // p의 주소 증가 (a[2]로 이동)
+            if (p_index < a.length) {
+                current_p_value = a[p_index];
+            } else {
+                current_p_value = "범위 밖"; // 배열 범위를 벗어날 경우
+            }
+            output += `5. *(p++)       = ${result5}\n`;
+
+            // 최종 p가 가리키는 값
+            output += `현재 p가 가리키는 값: ${current_p_value}\n`;
+
+            document.getElementById('arith-sim-text-output').textContent = output;
+            document.getElementById('arith-simulation-output').classList.remove('hidden');
+
+            // 시뮬레이션 시각화 업데이트
+            const visualContainer = document.getElementById('arith-simulation-visual');
+            visualContainer.innerHTML = ''; // 기존 내용 지우기
+
+            const currentPAddress = `0x${(0x1000 + p_index * INT_SIZE).toString(16).toUpperCase()}`;
+
+            let memoryHtml = `
+                <div class="arith-box">
+                    <div class="arith-value">p</div>
+                    <div class="arith-label">${currentPAddress}</div>
+                </div>
+                <div style="font-size: 2rem;">➡️</div>
+                <div class="arith-memory-segment">
+            `;
+
+            for (let i = 0; i < a.length; i++) {
+                const address = `0x${(0x1000 + i * INT_SIZE).toString(16).toUpperCase()}`;
+                const isCurrentPtr = (i === p_index -1 ); // p++ 이전에 p가 가리키던 곳
+                const cellValue = a[i];
+
+                memoryHtml += `
+                    <div class="arith-memory-cell ${isCurrentPtr ? 'current-ptr-cell' : ''}">
+                        <span class="arith-memory-cell-value">${cellValue}</span>
+                        <span class="arith-memory-cell-address">${address}</span>
+                    </div>
+                `;
+            }
+             memoryHtml += `</div>`;
+             visualContainer.insertAdjacentHTML('beforeend', memoryHtml);
+
+             // 최종 p의 위치 강조 (최종적으로 p가 가리키는 곳)
+             const finalPAddress = `0x${(0x1000 + p_index * INT_SIZE).toString(16).toUpperCase()}`;
+             const pBox = visualContainer.querySelector('.arith-box');
+             if(pBox) {
+                 pBox.querySelector('.arith-label').textContent = finalPAddress;
+                 pBox.classList.add('current-ptr-cell'); // 최종 p가 가리키는 포인터 박스도 강조
+             }
+
+             // 특정 메모리 셀 강조 (p가 최종적으로 가리키는 곳)
+             const cells = visualContainer.querySelectorAll('.arith-memory-cell');
+             cells.forEach((cell, index) => {
+                 if (index === p_index && p_index < a.length) {
+                     cell.classList.add('current-ptr-cell');
+                 } else {
+                     cell.classList.remove('current-ptr-cell');
+                 }
+             });
+
+        }
+
+
+    </script>
+</body>
+</html>
